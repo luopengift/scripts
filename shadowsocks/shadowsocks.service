@@ -1,0 +1,14 @@
+[Unit]
+Description=shadowsocks
+
+[Service]
+Type=forking
+PIDFile=/run/shadowsocks.pid
+ExecStart=/bin/ssserver -c /etc/shadowsocks.json --workers 1 --log-file /var/log/shadowsocks.log -d start
+ExecReload=/bin/ssserver -d restart
+ExecStop=/bin/ssserver -d stop
+KillMode=process
+Restart=on-failure
+RestartSec=1s
+[Install]
+WantedBy=multi-user.target
