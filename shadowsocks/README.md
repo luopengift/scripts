@@ -29,6 +29,8 @@ ssserver -c /etc/shadowsocks.json --workers 1 --log-file /var/log/shadowsocks.lo
 ```
 5. 客户端下载(可选)
 [MacOS](http://p07mgr0ww.bkt.clouddn.com/ShadowsocksX-2.6.3.dmg):http://p07mgr0ww.bkt.clouddn.com/ShadowsocksX-2.6.3.dmg
+[android](https://github.com/shadowsocks/shadowsocks-android/releases):https://github.com/shadowsocks/shadowsocks-android/releases
+[ios]
 
 6. 配置开机启动(可选，基于Centos7)
 ```
