@@ -28,6 +28,7 @@ pip install shadowsocks
 ssserver -c /etc/shadowsocks.json --workers 1 --log-file /var/log/shadowsocks.log -d start
 ```
 5. 客户端下载(可选)
+
 [Windows](http://p07mgr0ww.bkt.clouddn.com/Shadowsocks.exe):http://p07mgr0ww.bkt.clouddn.com/Shadowsocks.exe
 
 [MacOS](http://p07mgr0ww.bkt.clouddn.com/ShadowsocksX-2.6.3.dmg):http://p07mgr0ww.bkt.clouddn.com/ShadowsocksX-2.6.3.dmg
