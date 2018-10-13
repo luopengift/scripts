@@ -1,11 +1,25 @@
 #!/bin/bash
-PKG=$1
+
+#ln -s $GOPATH/src/github.com/golang $GOPATH/src/golang.org/x
+
+PKG=$2
 if [ "$PKG" == "" ]; then
-  echo "Usage: ./get-pkg.sh ctypto"
+  echo "Usage: ./get-pkg.sh [install|update] ctypto"
   exit -1
 fi
 
-set -x
-#git -C $GOPATH/src/github.com/golang/ clone https://github.com/golang/$PKG.git
-go get github.com/golang/$PKG
-ln -s $GOPATH/src/github.com/golang/$PKG $GOPATH/src/golang.org/x/$PKG
+case $1 in
+    "install")
+        set -x
+        git -C $GOPATH/src/github.com/golang/ clone https://github.com/golang/$PKG.git
+        #go get github.com/golang/$PKG
+        ln -s $GOPATH/src/github.com/golang/$PKG $GOPATH/src/golang.org/x/$PKG
+        ;;
+    "update")
+        set -x
+        go get -u $GOPATH/src/github.com/golang/$PKG
+        ;;
+    *)
+        echo "Usage: ./get-pkg.sh [install|update] ctypto"
+        ;;
+esac
