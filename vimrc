@@ -1,3 +1,14 @@
+"=========================================================================
+" path:  /usr/share/vim/vimrc
+" DesCRiption: 适合自己使用的vimrc文件，for Linux/Windows, GUI/Console
+"
+" Last Change: 2018年10月30日
+"
+" Version: 1.0.1
+"
+"=========================================================================
+
+
 " Configuration file for vim
 set modelines=0		" CVE-2007-2438
 
@@ -12,18 +23,6 @@ au BufWrite /private/tmp/crontab.* set nowritebackup nobackup
 au BufWrite /private/etc/pw.* set nowritebackup nobackup
 
 let skip_defaults_vim=1
-
-
-
-"=========================================================================
-" path:  /usr/share/vim/vimrc
-" DesCRiption: 适合自己使用的vimrc文件，for Linux/Windows, GUI/Console
-"
-" Last Change: 2017年11月30日 18时13分
-"
-" Version: 1.0.0
-"
-"=========================================================================
 
 set nocompatible " 关闭 vi 兼容模式
 syntax on " 自动语法高亮
@@ -45,8 +44,8 @@ set hlsearch " 搜索时高亮显示被找到的文本
 set noerrorbells " 关闭错误信息响铃
 set novisualbell " 关闭使用可视响铃代替呼叫
 set t_vb= " 置空错误铃声的终端代码
-" set showmatch " 插入括号时，短暂地跳转到匹配的对应括号
-" set matchtime=2 " 短暂跳转到匹配括号的时间
+set showmatch " 插入括号时，短暂地跳转到匹配的对应括号
+set matchtime=2 " 短暂跳转到匹配括号的时间
 set magic " 设置魔术
 set hidden " 允许在有未保存的修改时切换缓冲区，此时的修改由 vim 负责保存
 set guioptions-=T " 隐藏工具栏
@@ -56,7 +55,8 @@ set backspace=indent,eol,start
 " 不设定在插入状态无法用退格键和 Delete 键删除回车符
 set cmdheight=1 " 设定命令行的行数为 1
 set laststatus=2 " 显示状态栏 (默认值为 1, 无法显示状态栏)
-set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
+"set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ %{strftime(\"%d/%m/%y\ -\ %H:%M\")}   "状态行显示的内容
 " 设置在状态行显示的信息
 "set foldenable " 开始折叠
 "set foldmethod=syntax " 设置语法折叠
@@ -66,21 +66,20 @@ set foldclose=all " 设置为自动关闭折叠
 " nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 " 用空格键来开关折叠
 
-
 " return OS type, eg: windows, or linux, mac, et.st..
 function! MySys()
-if has("win16") || has("win32") || has("win64") || has("win95")
-return "windows"
-elseif has("unix")
-return "linux"
-endif
+	if has("win16") || has("win32") || has("win64") || has("win95")
+		return "windows"
+	elseif has("unix")
+		return "linux"
+	endif
 endfunction
 
 " 用户目录变量$VIMFILES
 if MySys() == "windows"
-let $VIMFILES = $VIM.'/vimfiles'
+	let $VIMFILES = $VIM.'/vimfiles'
 elseif MySys() == "linux"
-let $VIMFILES = $HOME.'/.vim'
+	let $VIMFILES = $HOME.'/.vim'
 endif
 
 " 设定doc文档目录
@@ -88,7 +87,7 @@ let helptags=$VIMFILES.'/doc'
 
 " 设置字体 以及中文支持
 if has("win32")
-set guifont=Inconsolata:h12:cANSI
+	set guifont=Inconsolata:h12:cANSI
 endif
 
 " 配置多语言环境
@@ -178,7 +177,6 @@ autocmd filetype php set dictionary=$VIMFILES/dict/php.dict
 " \bv 左右方式查看 \bs 上下方式查看
 "-----------------------------------------------------------------
 
-
 "-----------------------------------------------------------------
 " plugin - taglist.vim 查看函数列表，需要ctags程序
 " F4 打开隐藏taglist窗口
@@ -201,7 +199,6 @@ let Tlist_Process_File_Always = 1
 let Tlist_Display_Prototype = 0
 let Tlist_Compact_Format = 1
 
-
 "-----------------------------------------------------------------
 " plugin - mark.vim 给各种tags标记不同的颜色，便于观看调式的插件。
 " \m mark or unmark the word under (or before) the cursor
@@ -210,7 +207,6 @@ let Tlist_Compact_Format = 1
 " \* 当前MarkWord的下一个 \# 当前MarkWord的上一个
 " \/ 所有MarkWords的下一个 \? 所有MarkWords的上一个
 "-----------------------------------------------------------------
-
 
 "-----------------------------------------------------------------
 " plugin - NERD_tree.vim 以树状方式浏览系统中的文件和目录
@@ -226,7 +222,6 @@ let Tlist_Compact_Format = 1
 map <F3> :NERDTreeToggle<CR>
 imap <F3> <ESC>:NERDTreeToggle<CR>
 
-
 "-----------------------------------------------------------------
 " plugin - NERD_commenter.vim 注释代码用的，
 " [count],cc 光标以下count行逐行添加注释(7,cc)
@@ -238,7 +233,6 @@ imap <F3> <ESC>:NERDTreeToggle<CR>
 let NERDSpaceDelims=1 " 让注释符与语句之间留一个空格
 let NERDCompactSexyComs=1 " 多行注释时样子更好看
 
-
 "-----------------------------------------------------------------
 " plugin - DoxygenToolkit.vim 由注释生成文档，并且能够快速生成函数标准注释
 "-----------------------------------------------------------------
@@ -249,20 +243,17 @@ map <leader>df :Dox<CR>
 map <leader>db :DoxBlock<CR>
 map <leader>dc a /* */<LEFT><LEFT><LEFT>
 
-
 "-----------------------------------------------------------------
 " plugin – ZenCoding.vim 很酷的插件，HTML代码生成
 " 插件最新版：http://github.com/mattn/zencoding-vim
 " 常用命令可看：http://nootn.com/blog/Tool/23/
 "-----------------------------------------------------------------
 
-
 "-----------------------------------------------------------------
 " plugin – checksyntax.vim JavaScript常见语法错误检查
 " 默认快捷方式为 F5
 "-----------------------------------------------------------------
 let g:checksyntax_auto = 0 " 不自动检查
-
 
 "-----------------------------------------------------------------
 " plugin - NeoComplCache.vim 自动补全插件
@@ -283,19 +274,16 @@ inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 imap <silent> <C-e> <Plug>(neocomplcache_snippets_expand)
 smap <silent> <C-e> <Plug>(neocomplcache_snippets_expand)
 
-
 "-----------------------------------------------------------------
 " plugin - matchit.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
 " % 正向匹配 g% 反向匹配
 " [% 定位块首 ]% 定位块尾
 "-----------------------------------------------------------------
 
-
 "-----------------------------------------------------------------
 " plugin - vcscommand.vim 对%命令进行扩展使得能在嵌套标签和语句之间跳转
 " SVN/git管理工具
 "-----------------------------------------------------------------
-
 
 "-----------------------------------------------------------------
 " plugin – a.vim
