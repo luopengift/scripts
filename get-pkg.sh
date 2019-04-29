@@ -23,3 +23,5 @@ case $1 in
         echo "Usage: ./get-pkg.sh [install|update] ctypto"
         ;;
 esac
+#git -C $GOPATH/src/github.com/googleapis/ clone https://github.com/googleapis/google-cloud-go.git
+#ln -s $GOPATH/github.com/googleapis/google-cloud-go/ $GOPATH/src/cloud.google.com/go
